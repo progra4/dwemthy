@@ -16,7 +16,7 @@ class Creature
   end
 
 
-  attr_reader :life, :strength, :charisma, :weapon, :name
+  attr_accessor :life, :strength, :charisma, :weapon, :name
   #attr_writer :name
   attr_accessor :name
   
@@ -25,6 +25,12 @@ class Creature
   def self.create_random
     random_name = ('a'..'z').to_a.sample(10).join.capitalize
     Creature.new [rand(1..100), rand(1..10), rand(1..100), rand(1..100), random_name]
+  end
+
+  def self.define(name, &definition)
+    new_creature = Creature.new(name: name)
+    yield new_creature
+    new_creature
   end
 
 
