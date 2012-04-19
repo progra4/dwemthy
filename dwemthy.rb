@@ -1,11 +1,18 @@
 class Creature
 
-  def initialize(life, strength, charisma, weapon, name = nil)
-    @name = name || "Unknown"
-    @life = life
-    @strength = strength
-    @charisma = charisma
-    @weapon = weapon
+  def initialize(opts)
+    opts = if opts.is_a?(Hash)
+             opts
+           elsif opts.is_a?(Array)
+             Hash[ [:life, :strength, :charisma, :weapon, :name].zip(opts)  ]
+           else
+             raise "Learn to use the options!"
+           end
+    @name = opts[:name]
+    @life = opts[:life]
+    @strength = opts[:strength]
+    @charisma = opts[:charisma]
+    @weapon = opts[:weapon]
   end
 
 
@@ -17,7 +24,7 @@ class Creature
 
   def self.create_random
     random_name = ('a'..'z').to_a.sample(10).join.capitalize
-    Creature.new rand(1..100), rand(1..10), rand(1..100), rand(1..100), random_name
+    Creature.new [rand(1..100), rand(1..10), rand(1..100), rand(1..100), random_name]
   end
 
 
