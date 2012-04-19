@@ -29,7 +29,7 @@ class Creature
 
 
   def to_s
-    "#{@name}: life = #{life}, weapon = #{weapon}"
+    "#{name}: life = #{life}, weapon = #{weapon}"
   end
 
   def dead?
@@ -44,10 +44,10 @@ class Creature
     p_up = rand( charisma )
      if p_up % 9 == 7
        @life += p_up / 4
-       puts "[#{ @name } magick powers up #{ p_up }!]" 
+       puts "[#{ name } magick powers up #{ p_up }!]" 
      end 
      @life -= damage
-     puts "[#{ @name } has died.]" if dead?
+     puts "[#{ name } has died.]" if dead?
   end
 
   alias :get_hit :hit
@@ -55,20 +55,20 @@ class Creature
   def fight( enemy, weapon = nil )
    weapon ||= @weapon
    if dead?
-     puts "[#{ @name } is too dead to fight!]" 
+     puts "[#{ name } is too dead to fight!]" 
      return
    end
 
    # Attack the opponent
    your_hit = rand( strength + weapon )
-   puts "[#{@name} hits #{enemy.name} with #{ your_hit } points of damage!]" 
+   puts "[#{name} hits #{enemy.name} with #{ your_hit } points of damage!]" 
    enemy.hit( your_hit )
 
    # Retaliation
    p enemy
    if enemy.alive?
      enemy_hit = rand( enemy.strength + enemy.weapon )
-     puts "[ #{enemy.name} hits #{@name}  back with #{ enemy_hit } points of damage!]" 
+     puts "[ #{enemy.name} hits #{name}  back with #{ enemy_hit } points of damage!]" 
      self.hit( enemy_hit )
    end
   end
