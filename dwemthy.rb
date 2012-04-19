@@ -75,3 +75,28 @@ class Creature
 
   alias :attack :fight
 end
+
+module Dwemthy
+  GREETING = %Q{
+    In this game, you are a rabbit who is going to die.
+    A dragon is going to do it. Deep in Dwemthy's Array.
+  }
+  def self.greet
+    puts GREETING
+  end
+
+  class Dungeon < Array
+    def method_missing( meth, *args )
+      answer = first.send( meth, *args )
+      if first.dead?
+        shift
+        if empty?
+          puts "[Whoa.  You decimated Dwemthy's Array!]"
+        else
+          puts "[Get ready. #{ first.name } has emerged.]"
+        end
+      end
+      answer || 0
+    end
+  end
+end
