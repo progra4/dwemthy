@@ -98,5 +98,12 @@ module Dwemthy
       end
       answer || 0
     end
+
+    private
+
+    def populate
+      5.times{  self << Creature.create_random   }
+    end
+
   end
 end
