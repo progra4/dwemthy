@@ -1,0 +1,20 @@
+Usando (_otra vez_)  Dwemthy's Array para explicar programación
+orientada a objetos.
+
+Fuentes:
+
+* [El juego que hicimos en progra
+  2](https://github.com/lfborjas/progra2/tree/I_2011/parcial2/regular_dwemthy)
+* [La versión "corta" en java](https://gist.github.com/674734)
+* [Dwemthy's Array](http://mislav.uniqpath.com/poignant-guide/dwemthy/)
+* [Capítulo 5 de la "Why's Poignant Guide to
+  Ruby"](http://mislav.uniqpath.com/poignant-guide/book/chapter-5.html)
+* [Capítulo 6 de la "Why's Poignant Guide to
+  Ruby"](http://mislav.uniqpath.com/poignant-guide/book/chapter-6.html)
+* [Manual de referencia de
+  ruby](http://www.ruby-doc.org/docs/ProgrammingRuby/)
+* [Metaprogramming in
+  ruby](http://yehudakatz.com/2009/11/15/metaprogramming-in-ruby-its-all-about-the-self/)
+* [Seeing metaclasses
+  clearly](http://viewsourcecode.org/why/hacking/seeingMetaclassesClearly.html)
+* [Ruby Metaprogramming]()
