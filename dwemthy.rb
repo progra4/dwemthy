@@ -1,4 +1,12 @@
+require './meta'
 class Creature
+  include Familiar
+  extend Meta
+
+  lector :charisma
+  escritor :charisma
+
+  accesor :weapon
 
   def initialize(opts)
     opts = if opts.is_a?(Hash)
@@ -16,7 +24,7 @@ class Creature
   end
 
 
-  attr_accessor :life, :strength, :charisma, :weapon, :name
+  attr_accessor :life, :strength, :name
   #attr_writer :name
   attr_accessor :name
   
