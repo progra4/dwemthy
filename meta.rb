@@ -18,10 +18,23 @@ module Meta
 end
 
 module CreatureBuilder
-  %w(life charisma strength weapon).each do |trait|
-    define_method trait do |default_value|
-      attr_reader trait
-      instance_variable_set "@#{trait}", default_value
+  def self.included(includer)
+    includer.send :extend, ClassMethods
+
+    define_method :initialize do
+      self.class.instance_variable_get("@traits").each do |trait, value|
+        instance_variable_set "@#{trait}", value
+      end
+    end
+  end
+
+  module ClassMethods
+    %w(life charisma strength weapon).each do |trait|
+      define_method trait do |default_value|
+        attr_reader trait
+        @traits ||= {}
+        @traits[trait] = default_value
+      end
     end
   end
 end

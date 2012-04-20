@@ -1,46 +1,9 @@
 require './meta'
 class Creature
-  include Familiar
-  extend Meta
-
-  lector :charisma
-  escritor :charisma
-
-  accesor :weapon
-
-  def initialize(opts)
-    opts = if opts.is_a?(Hash)
-             opts
-           elsif opts.is_a?(Array)
-             Hash[ [:life, :strength, :charisma, :weapon, :name].zip(opts)  ]
-           else
-             raise "Learn to use the options!"
-           end
-    @name = opts[:name]
-    @life = opts[:life]
-    @strength = opts[:strength]
-    @charisma = opts[:charisma]
-    @weapon = opts[:weapon]
+  include CreatureBuilder
+  def name
+    self.class
   end
-
-
-  attr_accessor :life, :strength, :name
-  #attr_writer :name
-  attr_accessor :name
-  
-  alias :life_points :life
-
-  def self.create_random
-    random_name = ('a'..'z').to_a.sample(10).join.capitalize
-    Creature.new [rand(1..100), rand(1..10), rand(1..100), rand(1..100), random_name]
-  end
-
-  def self.define(name, &definition)
-    new_creature = Creature.new(name: name)
-    yield new_creature
-    new_creature
-  end
-
 
   def to_s
     "#{name}: life = #{life}, weapon = #{weapon}"
@@ -112,12 +75,5 @@ module Dwemthy
       end
       answer || 0
     end
-
-    private
-
-    def populate
-      5.times{  self << Creature.create_random   }
-    end
-
   end
 end
